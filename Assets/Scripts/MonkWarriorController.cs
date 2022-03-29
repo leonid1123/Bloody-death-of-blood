@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LizardWarriorController : MonoBehaviour {
+public class MonkWarriorController : MonoBehaviour {
 
     private GameObject[] allEnemyes;
-    public GameObject lizardBlood;
+    public GameObject monkBlood;
     public Animator anim;
     public Rigidbody2D rb2d;
-    private int lizardHp = 10;
+    private int monkHp = 10;
     void Update() {
-        allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetMonks();
+        allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetLizards();
         GameObject enemy1 = WhoToKill(allEnemyes);
         RunToEnemy(enemy1);
     }
@@ -45,10 +45,10 @@ public class LizardWarriorController : MonoBehaviour {
         }
     }
     public void TakeDamage(int _dmg) {
-        lizardHp -= _dmg;
-        GameObject hit = Instantiate(lizardBlood,transform.position,transform.rotation);
+        monkHp -= _dmg;
+        GameObject hit = Instantiate(monkBlood,transform.position,transform.rotation);
         Destroy(hit,0.5f);
-        if (lizardHp <= 0) {
+        if (monkHp <= 0) {
             //заспавнить лужу крови
             Destroy(gameObject);
         }
