@@ -8,11 +8,14 @@ public class MonkWarriorController : MonoBehaviour {
     public GameObject monkBlood;
     public Animator anim;
     public Rigidbody2D rb2d;
-    private int monkHp = 10;
+    private int monkHp = 50;
+    public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetLizards();
-        GameObject enemy1 = WhoToKill(allEnemyes);
-        RunToEnemy(enemy1);
+        if (allEnemyes.Length > 0) {
+            enemy1 = WhoToKill(allEnemyes);
+            RunToEnemy(enemy1);
+        }
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
         float dstMin = float.PositiveInfinity;
@@ -40,17 +43,21 @@ public class MonkWarriorController : MonoBehaviour {
     void AttackEnemy(string _beh) {
         if (_beh == "killkillkill") {
             anim.SetBool("isAtk", true);
+            //enemy1.GetComponent<LizardWarriorController>().TakeDamage(1);
         } else if (_beh == "runrunrun") {
             anim.SetBool("isAtk", false);
         }
     }
     public void TakeDamage(int _dmg) {
         monkHp -= _dmg;
-        GameObject hit = Instantiate(monkBlood,transform.position,transform.rotation);
-        Destroy(hit,0.5f);
+        GameObject hit = Instantiate(monkBlood, transform.position, transform.rotation);
+        Destroy(hit, 0.5f);
         if (monkHp <= 0) {
             //заспавнить лужу крови
             Destroy(gameObject);
         }
+    }
+    public void InflictDamage(int _dmg) {
+        enemy1.GetComponent<LizardWarriorController>().TakeDamage(_dmg);
     }
 }
