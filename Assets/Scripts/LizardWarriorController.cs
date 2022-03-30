@@ -5,7 +5,8 @@ using UnityEngine;
 public class LizardWarriorController : MonoBehaviour {
 
     private GameObject[] allEnemyes;
-    public GameObject lizardBlood;
+    [SerializeField]
+    private GameObject lizardBlood;
     public Animator anim;
     public Rigidbody2D rb2d;
     private int lizardHp = 10;
