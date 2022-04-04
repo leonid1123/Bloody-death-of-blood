@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7595198120649843749
+--- !u!1 &8438864613091224895
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,27 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6350823846329147836}
-  - component: {fileID: -2533221097087296305}
-  - component: {fileID: 584337918207158846}
-  - component: {fileID: 457883115240020043}
-  - component: {fileID: 4532966615342384976}
-  - component: {fileID: -7436170865564229041}
-  - component: {fileID: 2650804470828940826}
+  - component: {fileID: 7117401289133811720}
+  - component: {fileID: -45162643764743409}
+  - component: {fileID: 8932350893637958344}
+  - component: {fileID: 9208577543539707081}
+  - component: {fileID: -6568202635049013598}
   m_Layer: 0
-  m_Name: MonkWarrior
-  m_TagString: Monk
+  m_Name: LizardCarrier
+  m_TagString: Lizard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6350823846329147836
+--- !u!4 &7117401289133811720
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
+  m_GameObject: {fileID: 8438864613091224895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,13 +35,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &-2533221097087296305
+--- !u!212 &-45162643764743409
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
+  m_GameObject: {fileID: 8438864613091224895}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -78,65 +76,49 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cb4d89a2cf60cd041950c210323e107e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d199653f08b74e041b30ea57bfdd7a63, type: 3}
+  m_Color: {r: 0.8113208, g: 0.14083302, b: 0.14083302, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.75, y: 2}
+  m_Size: {x: 0.6666667, y: 0.6666667}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &584337918207158846
+--- !u!50 &8932350893637958344
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
+  m_GameObject: {fileID: 8438864613091224895}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 10
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!58 &457883115240020043
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.15
---- !u!95 &4532966615342384976
+  m_Constraints: 0
+--- !u!95 &9208577543539707081
 Animator:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
+  m_GameObject: {fileID: 8438864613091224895}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a7bcfd519ebf76646beb40ee947e2ba8, type: 2}
+  m_Controller: {fileID: 9100000, guid: 09c609d9b4220464aabc052fa853232e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -146,32 +128,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-7436170865564229041
+--- !u!114 &-6568202635049013598
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
+  m_GameObject: {fileID: 8438864613091224895}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e662988953d52594d98ce0b695c0a7d6, type: 3}
+  m_Script: {fileID: 11500000, guid: a7b9c6e222bc40b4d80a54ef5a7b82ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  monkBlood: {fileID: 7728657532092994261, guid: 4dee79fd5dd84ba41869596123c8d1d5, type: 3}
-  anim: {fileID: 4532966615342384976}
-  rb2d: {fileID: 584337918207158846}
-  enemy1: {fileID: 0}
---- !u!114 &2650804470828940826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fee4c69f851f134cbbae8984122b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
+  rb2d: {fileID: 8932350893637958344}
+  lizardHouse: {fileID: 8365745057682587616, guid: cc268bf73ee22424b9710361a4effe9c, type: 3}

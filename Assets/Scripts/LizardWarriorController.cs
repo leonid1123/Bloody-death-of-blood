@@ -55,6 +55,7 @@ public class LizardWarriorController : MonoBehaviour {
         Destroy(hit, 0.5f);
         if (lizardHp <= 0) {
             //заспавнить лужу крови
+            //заспавнить бутылку с кровью
             Destroy(gameObject);
         }
     }
