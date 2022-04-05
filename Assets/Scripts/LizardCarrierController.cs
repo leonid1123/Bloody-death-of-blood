@@ -3,42 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LizardCarrierController : MonoBehaviour {
+    private GameObject bottleToRun = null;
+    private int myState = 1; //0-ждать, 1- бежать к бутылке, 2 - нести бутылку домой
+    private float distanceToBottle;
     [SerializeField]
     private Rigidbody2D rb2d;
     [SerializeField]
     private Transform lizardHouse;
-    private int myState = 1; //0-ждать, 1-за бутылкой, 2-домой
-    void Start() {
-
+    public void setBottleToRun(GameObject _bottleToRun) {
+        bottleToRun = _bottleToRun;
     }
-
-    // Update is called once per frame
-    void Update() {
-        List<GameObject> allBlood = GameObject.Find("GameController").GetComponent<GameController>().GetLayBlood();
-        if (allBlood.Count > 0) {//исчезает условие передвижения!!! написать нормально обработку собственных состояний
-            float minDst = Mathf.Infinity;
-            GameObject bottleToRun = null;
-            foreach (GameObject blood in allBlood) {
-                float dst = Vector2.Distance(transform.position, blood.transform.position);
-                if (dst < minDst) {
-                    dst = minDst;
-                    bottleToRun = blood;
-                }
-            }
-            if (Vector2.Distance(transform.position, bottleToRun.transform.position) <= 0.1f) {
+    private void Update() {
+        if (bottleToRun != null && myState == 1) {
+            rb2d.AddForce((bottleToRun.transform.position - transform.position).normalized);
+            distanceToBottle = Vector2.Distance(transform.position, bottleToRun.transform.position);
+            if (distanceToBottle <= 0.1f) {
                 myState = 2;
-                bottleToRun.GetComponent<BloodBottleController>().SetBottleState("carry");
             }
-
-            if (myState == 1) {
-                rb2d.AddForce((bottleToRun.transform.position - transform.position).normalized);
-                Debug.Log("to bottle");
+        }
+        if (myState == 2) {
+            rb2d.AddForce((lizardHouse.position - transform.position).normalized);
+            if (bottleToRun != null) {
+                bottleToRun.transform.position = transform.position;
             }
-            if (myState == 2) {
-                rb2d.AddForce((lizardHouse.position - transform.position).normalized);
-                Debug.Log("to home");
-            }
-            Debug.Log(myState);
         }
     }
 }

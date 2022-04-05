@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 457883115240020043}
   - component: {fileID: 4532966615342384976}
   - component: {fileID: -7436170865564229041}
-  - component: {fileID: 2650804470828940826}
   m_Layer: 0
   m_Name: MonkWarrior
   m_TagString: Monk
@@ -162,16 +161,3 @@ MonoBehaviour:
   anim: {fileID: 4532966615342384976}
   rb2d: {fileID: 584337918207158846}
   enemy1: {fileID: 0}
---- !u!114 &2650804470828940826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7595198120649843749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fee4c69f851f134cbbae8984122b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}

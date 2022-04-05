@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5874477673187858026}
   - component: {fileID: -719303964221380502}
   - component: {fileID: -1585672389600090793}
-  - component: {fileID: -6679704755467969403}
   m_Layer: 0
   m_Name: LizardWarrior
   m_TagString: Lizard
@@ -137,6 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a50d9d84ab3f974693d51ab73859b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
+  lizardCarrier: {fileID: 8438864613091224895, guid: 762f118a98563f946a42988f8614e9eb, type: 3}
+  lizardHouse: {fileID: 8365745057682587616, guid: cc268bf73ee22424b9710361a4effe9c, type: 3}
   lizardBlood: {fileID: 7728657532092994261, guid: 8a8c12d52a455194b876111f14043d98, type: 3}
   anim: {fileID: 3639997528181531247}
   rb2d: {fileID: -1585672389600090793}
@@ -162,16 +164,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &-6679704755467969403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8919723673168713797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fee4c69f851f134cbbae8984122b56c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}

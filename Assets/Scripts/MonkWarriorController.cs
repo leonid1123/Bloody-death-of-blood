@@ -12,27 +12,27 @@ public class MonkWarriorController : MonoBehaviour {
     public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetLizards();
-        if (allEnemyes.Length > 0) {
+        if (allEnemyes != null && allEnemyes.Length > 0) {
             enemy1 = WhoToKill(allEnemyes);
             RunToEnemy(enemy1);
         }
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
         float dstMin = float.PositiveInfinity;
-        GameObject KILL = _allEnemyes[0];
-        foreach (GameObject i in _allEnemyes) {
-            float kt = Vector2.Distance(transform.position, i.transform.position);
-            if (kt < dstMin) {
-                dstMin = kt;
-                KILL = i;
+        GameObject KILL = _allEnemyes[0];       
+            foreach (GameObject i in _allEnemyes) {
+                float kt = Vector2.Distance(transform.position, i.transform.position);
+                if (kt < dstMin) {
+                    dstMin = kt;
+                    KILL = i;
+                }
+                if (dstMin < 0.4f) {
+                    AttackEnemy("killkillkill");
+                }
+                if (dstMin > 0.4f) {
+                    AttackEnemy("runrunrun");
+                }
             }
-            if (dstMin < 0.4f) {
-                AttackEnemy("killkillkill");
-            }
-            if (dstMin > 0.4f) {
-                AttackEnemy("runrunrun");
-            }
-        }
         return KILL;
     }
     void RunToEnemy(GameObject _enemy1) {

@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LizardWarriorController : MonoBehaviour {
-
+    [SerializeField]
+    private GameObject bloodBottle;
+    [SerializeField]
+    private GameObject lizardCarrier;
+    [SerializeField]
+    private Transform lizardHouse;
     private GameObject[] allEnemyes;
     [SerializeField]
     private GameObject lizardBlood;
@@ -13,9 +18,12 @@ public class LizardWarriorController : MonoBehaviour {
     public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetMonks();
-        if (allEnemyes.Length > 0) {
+        if (allEnemyes!=null && allEnemyes.Length > 0) {
             enemy1 = WhoToKill(allEnemyes);
             RunToEnemy(enemy1);
+        }
+        if (Input.GetKeyDown(KeyCode.K)) {
+            TakeDamage(81);
         }
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
@@ -37,9 +45,9 @@ public class LizardWarriorController : MonoBehaviour {
         return KILL;
     }
     void RunToEnemy(GameObject _enemy1) {
-        rb2d.AddForce((_enemy1.transform.position - transform.position).normalized);
-        //rb2d.velocity = ((_enemy1.transform.position - transform.position).normalized * Time.deltaTime);
-        //transform.Translate((_enemy1.transform.position - transform.position).normalized * Time.deltaTime, Space.World);
+        if (_enemy1 != null) {
+            rb2d.AddForce((_enemy1.transform.position - transform.position).normalized);
+        }
     }
     void AttackEnemy(string _beh) {
         if (_beh == "killkillkill") {
@@ -56,6 +64,10 @@ public class LizardWarriorController : MonoBehaviour {
         if (lizardHp <= 0) {
             //заспавнить лужу крови
             //заспавнить бутылку с кровью
+            //заспавнить бегунов
+            GameObject newBottle = Instantiate(bloodBottle, transform.position, transform.rotation);
+            GameObject newCarrier1 = Instantiate(lizardCarrier, lizardHouse.position, lizardHouse.rotation);
+            newCarrier1.GetComponent<LizardCarrierController>().setBottleToRun(newBottle);
             Destroy(gameObject);
         }
     }
