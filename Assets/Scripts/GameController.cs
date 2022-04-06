@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameController : MonoBehaviour {
     public static GameObject[] monks;
@@ -9,6 +11,8 @@ public class GameController : MonoBehaviour {
     public static List<GameObject> bloodLay;
     public static List<GameObject> bloodRun;
     public static List<GameObject> bloodCarry;
+    private int lizardBloodCount = 0;
+    private int monkBloodCount = 0;
 
     [SerializeField]
     private GameObject lizard;
@@ -18,12 +22,18 @@ public class GameController : MonoBehaviour {
     private GameObject monk;
     [SerializeField]
     private Transform monkHouse;
+    [SerializeField]
+    private TMP_Text lizardBloodText;
+    [SerializeField]
+    private TMP_Text monkBloodText;
     void Start() {
         bloodLay = new List<GameObject>();
         bloodCarry = new List<GameObject>();
         bloodRun = new List<GameObject>();
     }
     void Update() {
+        lizardBloodText.text = "Lizard Blood: " + GetLizardBloodCount().ToString();
+        monkBloodText.text = "Monk Blood: " + GetMonkBloodCount().ToString();
         bloodLay.Clear();
         bloodCarry.Clear();
         bloodRun.Clear();
@@ -41,13 +51,13 @@ public class GameController : MonoBehaviour {
             }
         }
     }
-    public List<GameObject> GetLayBlood(){
+    public List<GameObject> GetLayBlood() {
         return bloodLay;
     }
-    public List<GameObject> GetRunBlood(){
+    public List<GameObject> GetRunBlood() {
         return bloodRun;
     }
-    public List<GameObject> GetCarryBlood(){
+    public List<GameObject> GetCarryBlood() {
         return bloodCarry;
     }
     public GameObject[] GetMonks() {
@@ -57,9 +67,33 @@ public class GameController : MonoBehaviour {
         return lizards;
     }
     public void LizardSpawn() {
-        Instantiate(lizard, lizardHouse.position, lizardHouse.rotation);
+        if (lizardBloodCount > 0) {
+            Instantiate(lizard, lizardHouse.position, lizardHouse.rotation);
+            RemoveLizardBloodCount(1);
+        }
     }
     public void MonkSpawn() {
-        Instantiate(monk, lizardHouse.position, lizardHouse.rotation);
+        if (monkBloodCount > 0) {
+            Instantiate(monk, lizardHouse.position, lizardHouse.rotation);
+            RemoveMonkBloodCount(1);
+        }
+    }
+    public void AddLizardBloodCount(int _lizardBloodCount) {
+        lizardBloodCount += _lizardBloodCount;
+    }
+    public void RemoveLizardBloodCount(int _lizardBloodCount) {
+        lizardBloodCount -= _lizardBloodCount;
+    }
+    public int GetLizardBloodCount() {
+        return lizardBloodCount;
+    }
+    public void AddMonkBloodCount(int _monkBloodCount) {
+        monkBloodCount += _monkBloodCount;
+    }
+    public void RemoveMonkBloodCount(int _monkBloodCount) {
+        monkBloodCount -= _monkBloodCount;
+    }
+    public int GetMonkBloodCount() {
+        return monkBloodCount;
     }
 }

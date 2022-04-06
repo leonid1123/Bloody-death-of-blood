@@ -12,6 +12,14 @@ public class BloodBottleController : MonoBehaviour
         state = _state;
     }
     private void Start() {
-        Destroy(gameObject,10f);
+        Invoke("DestroySelf",10f);
+    }
+    private void DestroySelf() {
+        Destroy(gameObject);
+    }
+    private void Update() {
+        if (state=="carry") {
+            CancelInvoke("DestroySelf");
+        }
     }
 }

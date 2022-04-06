@@ -5,13 +5,18 @@ using UnityEngine;
 public class LizardCarrierController : MonoBehaviour {
     private GameObject bottleToRun = null;
     private int myState = 1; //0-ждать, 1- бежать к бутылке, 2 - нести бутылку домой
+    private int lizardCarrierHP = 7;
     private float distanceToBottle;
     [SerializeField]
     private Rigidbody2D rb2d;
     [SerializeField]
     private Transform lizardHouse;
+    private GameController gameController;
     public void setBottleToRun(GameObject _bottleToRun) {
         bottleToRun = _bottleToRun;
+    }
+    private void Start() {
+        gameController=GameObject.Find("GameController").GetComponent<GameController>();
     }
     private void Update() {
         if (bottleToRun != null && myState == 1) {
@@ -22,10 +27,24 @@ public class LizardCarrierController : MonoBehaviour {
             }
         }
         if (myState == 2) {
+            bottleToRun.GetComponent<BloodBottleController>().SetBottleState("carry");
             rb2d.AddForce((lizardHouse.position - transform.position).normalized);
+            if (Vector2.Distance(lizardHouse.position,transform.position)<=0.2f) {
+                gameController.AddLizardBloodCount(1);
+                Destroy(gameObject);
+                Destroy(bottleToRun);
+            }
             if (bottleToRun != null) {
                 bottleToRun.transform.position = transform.position;
             }
+        }
+    }
+    public void TakeDamage(int _dmg) {
+        lizardCarrierHP-=_dmg;
+        if (lizardCarrierHP<=0) {
+            bottleToRun.GetComponent<BloodBottleController>().SetBottleState("lay");
+            //спавнить несуна
+            Destroy(gameObject);
         }
     }
 }

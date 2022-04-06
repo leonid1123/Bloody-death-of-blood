@@ -19,20 +19,20 @@ public class MonkWarriorController : MonoBehaviour {
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
         float dstMin = float.PositiveInfinity;
-        GameObject KILL = _allEnemyes[0];       
-            foreach (GameObject i in _allEnemyes) {
-                float kt = Vector2.Distance(transform.position, i.transform.position);
-                if (kt < dstMin) {
-                    dstMin = kt;
-                    KILL = i;
-                }
-                if (dstMin < 0.4f) {
-                    AttackEnemy("killkillkill");
-                }
-                if (dstMin > 0.4f) {
-                    AttackEnemy("runrunrun");
-                }
+        GameObject KILL = _allEnemyes[0];
+        foreach (GameObject i in _allEnemyes) {
+            float kt = Vector2.Distance(transform.position, i.transform.position);
+            if (kt < dstMin) {
+                dstMin = kt;
+                KILL = i;
             }
+            if (dstMin < 0.4f) {
+                AttackEnemy("killkillkill");
+            }
+            if (dstMin > 0.4f) {
+                AttackEnemy("runrunrun");
+            }
+        }
         return KILL;
     }
     void RunToEnemy(GameObject _enemy1) {
@@ -58,6 +58,11 @@ public class MonkWarriorController : MonoBehaviour {
         }
     }
     public void InflictDamage(int _dmg) {
-        enemy1.GetComponent<LizardWarriorController>().TakeDamage(_dmg);
+        bool who = enemy1.GetComponent<LizardWarriorController>();
+        if (who) {
+            enemy1.GetComponent<LizardWarriorController>().TakeDamage(_dmg);
+        } else {
+            enemy1.GetComponent<LizardCarrierController>().TakeDamage(_dmg);
+        }
     }
 }

@@ -30,6 +30,7 @@ public class LizardWarriorController : MonoBehaviour {
         float dstMin = float.PositiveInfinity;
         GameObject KILL = _allEnemyes[0];
         foreach (GameObject i in _allEnemyes) {
+            if (i==null) {break;}
             float kt = Vector2.Distance(transform.position, i.transform.position);
             if (kt < dstMin) {
                 dstMin = kt;
@@ -68,10 +69,11 @@ public class LizardWarriorController : MonoBehaviour {
             GameObject newBottle = Instantiate(bloodBottle, transform.position, transform.rotation);
             GameObject newCarrier1 = Instantiate(lizardCarrier, lizardHouse.position, lizardHouse.rotation);
             newCarrier1.GetComponent<LizardCarrierController>().setBottleToRun(newBottle);
+            newBottle.GetComponent<BloodBottleController>().SetBottleState("run");
             Destroy(gameObject);
         }
     }
-    public void InflictDamage(int _dmg) {
+    public void InflictDamage(int _dmg) {//поправить на несуна монахов
         enemy1.GetComponent<MonkWarriorController>().TakeDamage(_dmg);
     }
 }
