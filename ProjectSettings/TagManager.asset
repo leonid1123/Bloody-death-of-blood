@@ -47,6 +47,9 @@ TagManager:
   - name: carrier
     uniqueID: 971433673
     locked: 0
+  - name: warriors
+    uniqueID: 1596658315
+    locked: 0
   - name: bloodBottle
     uniqueID: 717979241
     locked: 0

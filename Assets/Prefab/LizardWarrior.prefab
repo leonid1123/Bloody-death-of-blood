@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1596658315
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d199653f08b74e041b30ea57bfdd7a63, type: 3}
   m_Color: {r: 1, g: 0.5981132, b: 0.5981132, a: 1}
@@ -136,10 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a50d9d84ab3f974693d51ab73859b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
-  lizardCarrier: {fileID: 8438864613091224895, guid: 762f118a98563f946a42988f8614e9eb, type: 3}
   lizardHouse: {fileID: 8365745057682587616, guid: cc268bf73ee22424b9710361a4effe9c, type: 3}
   lizardBlood: {fileID: 7728657532092994261, guid: 8a8c12d52a455194b876111f14043d98, type: 3}
+  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
   anim: {fileID: 3639997528181531247}
   rb2d: {fileID: -1585672389600090793}
   enemy1: {fileID: 0}

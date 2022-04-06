@@ -74,8 +74,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1596658315
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cb4d89a2cf60cd041950c210323e107e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -157,7 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e662988953d52594d98ce0b695c0a7d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  monkHouse: {fileID: 3686546436695953052, guid: 016a2d5e61f07254fa925dc89c264b44, type: 3}
   monkBlood: {fileID: 7728657532092994261, guid: 4dee79fd5dd84ba41869596123c8d1d5, type: 3}
+  bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
   anim: {fileID: 4532966615342384976}
   rb2d: {fileID: 584337918207158846}
   enemy1: {fileID: 0}

@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class LizardWarriorController : MonoBehaviour {
     [SerializeField]
-    private GameObject bloodBottle;
-    [SerializeField]
-    private GameObject lizardCarrier;
-    [SerializeField]
     private Transform lizardHouse;
     private GameObject[] allEnemyes;
     [SerializeField]
     private GameObject lizardBlood;
+    [SerializeField]
+    private GameObject bloodBottle;
     public Animator anim;
     public Rigidbody2D rb2d;
     private int lizardHp = 80;
@@ -24,6 +22,14 @@ public class LizardWarriorController : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.K)) {
             TakeDamage(81);
+        }
+        float dir = transform.position.x-enemy1.transform.position.x;
+        if(dir>0) {
+            //враг слева угол поворота 180
+        transform.rotation = Quaternion.Euler(0,180,0);
+
+        } else {
+            transform.rotation = Quaternion.Euler(0,0,0);
         }
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
@@ -67,9 +73,7 @@ public class LizardWarriorController : MonoBehaviour {
             //заспавнить бутылку с кровью
             //заспавнить бегунов
             GameObject newBottle = Instantiate(bloodBottle, transform.position, transform.rotation);
-            GameObject newCarrier1 = Instantiate(lizardCarrier, lizardHouse.position, lizardHouse.rotation);
-            newCarrier1.GetComponent<LizardCarrierController>().setBottleToRun(newBottle);
-            newBottle.GetComponent<BloodBottleController>().SetBottleState("run");
+            newBottle.GetComponent<BloodBottleController>().SetBottleState("lay");
             Destroy(gameObject);
         }
     }

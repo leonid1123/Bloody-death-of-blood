@@ -24,6 +24,13 @@ public class GameController : MonoBehaviour {
     private Transform monkHouse;
     [SerializeField]
     private TMP_Text lizardBloodText;
+    
+    [SerializeField]
+    private GameObject bloodBottle;
+    [SerializeField]
+    private GameObject lizardCarrier;
+    [SerializeField]
+    private GameObject monkCarrier;
     [SerializeField]
     private TMP_Text monkBloodText;
     void Start() {
@@ -49,6 +56,19 @@ public class GameController : MonoBehaviour {
             } else if (state == "carry") {
                 bloodCarry.Add(bld);
             }
+        }
+        //спавнить несуна тут!!!
+        foreach(GameObject bottle in bloodLay) {
+            //спавнить несуна
+            //давать несуну бутылку
+            //менять статус бутылки
+            GameObject newCarrier1 = Instantiate(monkCarrier, monkHouse.position, monkHouse.rotation);
+            newCarrier1.GetComponent<MonkCarrierController>().setBottleToRun(bottle);
+            bottle.GetComponent<BloodBottleController>().SetBottleState("run");
+            
+            GameObject newCarrier2 = Instantiate(lizardCarrier, lizardHouse.position, lizardHouse.rotation);
+            newCarrier2.GetComponent<LizardCarrierController>().setBottleToRun(bottle);
+            bottle.GetComponent<BloodBottleController>().SetBottleState("run");
         }
     }
     public List<GameObject> GetLayBlood() {

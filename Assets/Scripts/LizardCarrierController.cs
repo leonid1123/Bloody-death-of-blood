@@ -16,7 +16,7 @@ public class LizardCarrierController : MonoBehaviour {
         bottleToRun = _bottleToRun;
     }
     private void Start() {
-        gameController=GameObject.Find("GameController").GetComponent<GameController>();
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
     private void Update() {
         if (bottleToRun != null && myState == 1) {
@@ -29,7 +29,7 @@ public class LizardCarrierController : MonoBehaviour {
         if (myState == 2) {
             bottleToRun.GetComponent<BloodBottleController>().SetBottleState("carry");
             rb2d.AddForce((lizardHouse.position - transform.position).normalized);
-            if (Vector2.Distance(lizardHouse.position,transform.position)<=0.2f) {
+            if (Vector2.Distance(lizardHouse.position, transform.position) <= 0.2f) {
                 gameController.AddLizardBloodCount(1);
                 Destroy(gameObject);
                 Destroy(bottleToRun);
@@ -40,9 +40,12 @@ public class LizardCarrierController : MonoBehaviour {
         }
     }
     public void TakeDamage(int _dmg) {
-        lizardCarrierHP-=_dmg;
-        if (lizardCarrierHP<=0) {
-            bottleToRun.GetComponent<BloodBottleController>().SetBottleState("lay");
+        lizardCarrierHP -= _dmg;
+        if (lizardCarrierHP <= 0) {
+            if (bottleToRun != null) {
+                bottleToRun.GetComponent<BloodBottleController>().SetBottleState("lay");
+
+            }
             //спавнить несуна
             Destroy(gameObject);
         }
