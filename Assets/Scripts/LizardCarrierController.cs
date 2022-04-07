@@ -20,6 +20,7 @@ public class LizardCarrierController : MonoBehaviour {
     }
     private void Update() {
         if (myState==0) {
+            //переделать на бег к ближайшей бутылке!!!
             rb2d.AddForce((lizardHouse.transform.position - transform.position).normalized);
         }
         if (bottleToRun != null && myState == 1) {

@@ -12,7 +12,7 @@ public class MonkWarriorController : MonoBehaviour {
     private GameObject bloodBottle;
     public Animator anim;
     public Rigidbody2D rb2d;
-    private int monkHp = 80;
+    private int monkHp = 60;
     public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetLizards();
