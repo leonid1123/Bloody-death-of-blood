@@ -77,7 +77,8 @@ public class LizardWarriorController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-    public void InflictDamage(int _dmg) {//поправить на несуна монахов
-        enemy1.GetComponent<MonkWarriorController>().TakeDamage(_dmg);
+    public void InflictDamage(int _dmg) {
+        
+        if (enemy1!=null) enemy1.GetComponent<MonkWarriorController>().TakeDamage(_dmg);
     }
 }

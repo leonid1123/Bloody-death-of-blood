@@ -23,6 +23,7 @@ public class MonkWarriorController : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.K)) {
             TakeDamage(81);
         }
+        if (enemy1==null) return;
         float dir = transform.position.x-enemy1.transform.position.x;
         if(dir>0) {
             //враг слева угол поворота 180
@@ -77,7 +78,8 @@ public class MonkWarriorController : MonoBehaviour {
             Destroy(gameObject);
         }
     }
-    public void InflictDamage(int _dmg) {//поправить на несуна монахов
+    public void InflictDamage(int _dmg) {
+        if (enemy1==null) return; 
         enemy1.GetComponent<LizardWarriorController>().TakeDamage(_dmg);
     }
 }

@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LizardCarrierController : MonoBehaviour {
+public class MonkCarrierController : MonoBehaviour {
     private GameObject bottleToRun = null;
     private int myState = 1; //0-ждать, 1- бежать к бутылке, 2 - нести бутылку домой
-    private int lizardCarrierHP = 7;
+    private int monkCarrierHP = 7;
     private float distanceToBottle;
     [SerializeField]
     private Rigidbody2D rb2d;
     [SerializeField]
-    private Transform lizardHouse;
+    private Transform monkHouse;
     private GameController gameController;
     public void setBottleToRun(GameObject _bottleToRun) {
         bottleToRun = _bottleToRun;
@@ -19,8 +19,8 @@ public class LizardCarrierController : MonoBehaviour {
         gameController = GameObject.Find("GameController").GetComponent<GameController>();
     }
     private void Update() {
-        if (myState==0) {
-            rb2d.AddForce((lizardHouse.transform.position - transform.position).normalized);
+        if (myState == 0) {
+            rb2d.AddForce((monkHouse.transform.position - transform.position).normalized);
         }
         if (bottleToRun != null && myState == 1) {
             rb2d.AddForce((bottleToRun.transform.position - transform.position).normalized);
@@ -28,15 +28,15 @@ public class LizardCarrierController : MonoBehaviour {
             if (distanceToBottle <= 0.1f) {
                 myState = 2;
             }
-            if (bottleToRun.GetComponent<BloodBottleController>().GetBottleState()!="run") {
+            if (bottleToRun.GetComponent<BloodBottleController>().GetBottleState() != "run") {
                 myState = 0;
             }
         }
         if (myState == 2) {
             bottleToRun.GetComponent<BloodBottleController>().SetBottleState("carry");
-            rb2d.AddForce((lizardHouse.position - transform.position).normalized);
-            if (Vector2.Distance(lizardHouse.position, transform.position) <= 0.2f) {
-                gameController.AddLizardBloodCount(1);
+            rb2d.AddForce((monkHouse.position - transform.position).normalized);
+            if (Vector2.Distance(monkHouse.position, transform.position) <= 0.2f) {
+                gameController.AddMonkBloodCount(1);
                 Destroy(bottleToRun);
                 Destroy(gameObject);
             }
@@ -46,8 +46,8 @@ public class LizardCarrierController : MonoBehaviour {
         }
     }
     public void TakeDamage(int _dmg) {
-        lizardCarrierHP -= _dmg;
-        if (lizardCarrierHP <= 0) {
+        monkCarrierHP -= _dmg;
+        if (monkCarrierHP <= 0) {
             if (bottleToRun != null) {
                 bottleToRun.GetComponent<BloodBottleController>().SetBottleState("lay");
 
@@ -57,18 +57,3 @@ public class LizardCarrierController : MonoBehaviour {
         }
     }
 }
-/*
-есть ли приоритет в убийстве несунов?
-какая логика определения цели воина: воин-несун?
-палец бога?
-
-количество несунов равно количеству бутылок
-если есть бутылка спавнить несуна
-у несуна 3 состояния: ждёт, бежит за бутылкой, несет бутылку
-у бутылки 3 состояния: лежит, за ней бежит свой несун, её несут
-
-несун бежит за ближейшей бутылкой за которой не бежит свой несун
-
-если бутылка пропала(её подобрал враг или свой) несун ждёт
-
-*/

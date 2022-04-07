@@ -38,7 +38,9 @@ public class GameController : MonoBehaviour {
         bloodCarry = new List<GameObject>();
         bloodRun = new List<GameObject>();
     }
-    void Update() {
+
+
+    void FixedUpdate() {
         lizardBloodText.text = "Lizard Blood: " + GetLizardBloodCount().ToString();
         monkBloodText.text = "Monk Blood: " + GetMonkBloodCount().ToString();
         bloodLay.Clear();

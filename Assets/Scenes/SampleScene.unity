@@ -4130,6 +4130,7 @@ MonoBehaviour:
   lizardBloodText: {fileID: 1918112219}
   bloodBottle: {fileID: 2826003613400290088, guid: 0113f5c3c645bcb4e96fd0159dc4dc21, type: 3}
   lizardCarrier: {fileID: 8438864613091224895, guid: 762f118a98563f946a42988f8614e9eb, type: 3}
+  monkCarrier: {fileID: 6477047639645274516, guid: 58dcf57c954f14143931048eb0f40abe, type: 3}
   monkBloodText: {fileID: 1836648448}
 --- !u!4 &1949777402
 Transform:
