@@ -7,6 +7,10 @@ TagManager:
   - Monk
   - Lizard
   - Blood
+  - LizardSpawnPoint
+  - MonkSpawnPoint
+  - LizardSpawnPointSelector
+  - MonkSpawnPointSelector
   layers:
   - Default
   - TransparentFX

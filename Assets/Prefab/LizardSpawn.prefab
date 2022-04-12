@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7400579466484983498}
   m_Layer: 0
   m_Name: Selector
-  m_TagString: Untagged
+  m_TagString: LizardSpawnPointSelector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4826,7 +4826,7 @@ GameObject:
   - component: {fileID: 3045688567464260088}
   m_Layer: 0
   m_Name: LizardSpawn
-  m_TagString: Untagged
+  m_TagString: LizardSpawnPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4911,7 +4911,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831e6b5184cbf964e8068bc7f1ca7a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sel: {fileID: 1166180131564579116}
 --- !u!58 &3045688567464260088
 CircleCollider2D:
   m_ObjectHideFlags: 0
