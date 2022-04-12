@@ -10,6 +10,7 @@ public class StartController : MonoBehaviour {
     private GameController gameController;
     [SerializeField]
     private GameObject lizardButton;
+    
     [SerializeField]
     private GameObject monkButton;
     private void Awake() {
@@ -31,6 +32,8 @@ public class StartController : MonoBehaviour {
         }
         //дать ресурсы
         gameController.GetComponent<GameController>().AddLizardBloodCount(5);
+        gameController.GetComponent<GameController>().AddMonkBloodCount(5);
+       
         //показать кнопки
         lizardButton.SetActive(true);
         //убрать канву

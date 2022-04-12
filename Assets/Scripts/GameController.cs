@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private GameObject lizard;
     [SerializeField]
-    private Transform lizardHouse;
+    private Transform[] lizardHouse;
     [SerializeField]
     private GameObject monk;
     [SerializeField]
@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour {
 
 
     void FixedUpdate() {
+        
         lizardBloodText.text = "Lizard Blood: " + GetLizardBloodCount().ToString();
         monkBloodText.text = "Monk Blood: " + GetMonkBloodCount().ToString();
         bloodLay.Clear();
@@ -68,7 +69,7 @@ public class GameController : MonoBehaviour {
             newCarrier1.GetComponent<MonkCarrierController>().setBottleToRun(bottle);
             bottle.GetComponent<BloodBottleController>().SetBottleState("run");
             
-            GameObject newCarrier2 = Instantiate(lizardCarrier, lizardHouse.position, lizardHouse.rotation);
+            GameObject newCarrier2 = Instantiate(lizardCarrier, lizardHouse[0].position, lizardHouse[0].rotation);
             newCarrier2.GetComponent<LizardCarrierController>().setBottleToRun(bottle);
             bottle.GetComponent<BloodBottleController>().SetBottleState("run");
         }
@@ -90,13 +91,17 @@ public class GameController : MonoBehaviour {
     }
     public void LizardSpawn() {
         if (lizardBloodCount > 0) {
-            Instantiate(lizard, lizardHouse.position, lizardHouse.rotation);
+            if(Random.value>0.5) {
+                Instantiate(lizard, lizardHouse[0].position, lizardHouse[0].rotation);
+            } else {
+                Instantiate(lizard, lizardHouse[1].position, lizardHouse[1].rotation);
+            }
             RemoveLizardBloodCount(1);
         }
     }
     public void MonkSpawn() {
         if (monkBloodCount > 0) {
-            Instantiate(monk, lizardHouse.position, lizardHouse.rotation);
+            Instantiate(monk, monkHouse.position, monkHouse.rotation);
             RemoveMonkBloodCount(1);
         }
     }
