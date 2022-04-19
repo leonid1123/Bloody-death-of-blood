@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//отвечает только за старт игры, выбор стороны
 public class StartController : MonoBehaviour {
     [SerializeField]
     private Canvas startScreen;

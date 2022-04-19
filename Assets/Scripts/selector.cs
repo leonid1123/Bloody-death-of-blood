@@ -1,22 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class selector : MonoBehaviour {
-    GameObject[] sel;
-    private void Awake() {
-        sel = GameObject.FindGameObjectsWithTag("LizardSpawnPointSelector");
-        foreach (GameObject s in sel) {
-            s.SetActive(false);
-        }
-        Debug.Log(sel.Length);
-    }
+    bool selected = false;
+    [SerializeField]
+    GameObject selectedEffect;
+
     private void OnMouseDown() {
-        foreach (GameObject s in sel) {
-            s.SetActive(false);
+        GameObject[] allSpawnPoints = GameObject.Find("GameController").GetComponent<GameController>().GetAllSpawnPoints();
+        foreach(GameObject item in allSpawnPoints) {
+            item.GetComponent<selector>().RemoveSelection();
         }
-        transform.GetChild(0).gameObject.SetActive(true);
+        selected = true;
+        selectedEffect.SetActive(true);
+        Debug.Log("selected"+gameObject.name);
     }
-// сделать нормальный механизм выбора домика
-// ВЕРУТЬСЯ к ОСТАЛЬНЫМ проблеМам!!!!
+    public void RemoveSelection() {
+        selected=false;
+        Debug.Log("not selected"+gameObject.name);
+        selectedEffect.SetActive(false);
+    }
+    public bool IsSelected() {
+        return selected;
+    }
 }
