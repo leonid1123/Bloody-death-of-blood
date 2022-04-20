@@ -39,7 +39,7 @@ public class GameController : MonoBehaviour {
     private GameObject monk;
     //префаб монаха для спавнв
     [SerializeField]
-    
+
     private GameObject bloodBottle;
     //префаб бытылки с кровью для спавна бутылок
     [SerializeField]
@@ -48,7 +48,7 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private GameObject monkCarrier;
     //префаб несуна монахов для спавна
-    
+
     [SerializeField]
     private TMP_Text lizardBloodText;
     //элемент для отображения крови лизардов
@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour {
 
     void FixedUpdate() {
         lizardSpawn = GameObject.FindGameObjectsWithTag("LizardSpawnPoint");//найти все домики лизардов
-        foreach(GameObject item in lizardSpawn) {//  найти выбранный домик
+        foreach (GameObject item in lizardSpawn) {//  найти выбранный домик
             if (item.GetComponent<selector>().IsSelected()) {
                 selectedLizardSpawn = item;//запомнить выбранный домик для определения места спавна
             }
@@ -94,16 +94,23 @@ public class GameController : MonoBehaviour {
                 bloodCarry.Add(bld);
             }
         }
+        //найти несунов в статусе 0
+        GameObject[] stupidLizardCarriers = GameObject.Find("Carrier") 
+
         //спавнить несуна тут!!!
-        foreach(GameObject bottle in bloodLay) {
-            //спавнить несуна
-            //давать несуну бутылку
-            //менять статус бутылки
-            //решить проблему с несунами!!!!
+        foreach (GameObject bottle in bloodLay) {
+
+            /*
+                если погиб вариор спавниться бутылка и получает статус lay
+                каждый кадр все бутылки состатусом lay попадают в список
+                каждый кадр всем бутылкам со статусом lay спавнится несун и статус бытылки меняесся на run
+
+                если погибает несун бутылка получает статус lay
+            */
             GameObject newCarrier1 = Instantiate(monkCarrier, monkHouse.position, monkHouse.rotation);
             newCarrier1.GetComponent<MonkCarrierController>().setBottleToRun(bottle);
             bottle.GetComponent<BloodBottleController>().SetBottleState("run");
-            
+
             GameObject newCarrier2 = Instantiate(lizardCarrier, selectedLizardSpawn.transform.position, selectedLizardSpawn.transform.rotation);
             newCarrier2.GetComponent<LizardCarrierController>().setBottleToRun(bottle);
             bottle.GetComponent<BloodBottleController>().SetBottleState("run");
@@ -132,7 +139,7 @@ public class GameController : MonoBehaviour {
             //спавним лизарда из выбранного домика:
             //какой домик выбран
             //спавн лизарда
-            Instantiate(lizard,selectedLizardSpawn.transform.position,selectedLizardSpawn.transform.rotation);
+            Instantiate(lizard, selectedLizardSpawn.transform.position, selectedLizardSpawn.transform.rotation);
             RemoveLizardBloodCount(1);
         }
     }

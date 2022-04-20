@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BloodBottleController : MonoBehaviour
 {
-    private string state="lay"; //lay, run, carry
+    private string state="lay"; //lay, lizardRun/monkRun, carry
+
     public string GetBottleState() {
         return state;
     }

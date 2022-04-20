@@ -16,27 +16,27 @@ public class LizardWarriorController : MonoBehaviour {
     public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetMonks();
-        if (allEnemyes!=null && allEnemyes.Length > 0) {
+        if (allEnemyes != null && allEnemyes.Length > 0) {
             enemy1 = WhoToKill(allEnemyes);
             RunToEnemy(enemy1);
         }
         if (Input.GetKeyDown(KeyCode.K)) {
             TakeDamage(81);
         }
-        float dir = transform.position.x-enemy1.transform.position.x;
-        if(dir>0) {
+        float dir = transform.position.x - enemy1.transform.position.x;
+        if (dir > 0) {
             //враг слева угол поворота 180
-        transform.rotation = Quaternion.Euler(0,180,0);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
 
         } else {
-            transform.rotation = Quaternion.Euler(0,0,0);
+            transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
     public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
         float dstMin = float.PositiveInfinity;
         GameObject KILL = _allEnemyes[0];
         foreach (GameObject i in _allEnemyes) {
-            if (i==null) {break;}
+            if (i == null) { break; }
             float kt = Vector2.Distance(transform.position, i.transform.position);
             if (kt < dstMin) {
                 dstMin = kt;
@@ -78,7 +78,11 @@ public class LizardWarriorController : MonoBehaviour {
         }
     }
     public void InflictDamage(int _dmg) {
-        
-        if (enemy1!=null) enemy1.GetComponent<MonkWarriorController>().TakeDamage(_dmg);
+        if (enemy1 == null) return;
+        if (enemy1.name.Contains("Carrier")) {
+            enemy1.GetComponent<MonkCarrierController>().TakeDamage(_dmg);
+        } else {
+            enemy1.GetComponent<MonkWarriorController>().TakeDamage(_dmg);
+        }
     }
 }

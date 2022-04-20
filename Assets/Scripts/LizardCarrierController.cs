@@ -21,7 +21,10 @@ public class LizardCarrierController : MonoBehaviour {
     private void Update() {
         if (myState==0) {
             //переделать на бег к ближайшей бутылке!!!
-            rb2d.AddForce((lizardHouse.transform.position - transform.position).normalized);
+            //rb2d.AddForce((lizardHouse.transform.position - transform.position).normalized);
+            //if (Vector2.Distance(lizardHouse.position, transform.position) <= 0.2f) {
+            //    Destroy(gameObject);
+            //}
         }
         if (bottleToRun != null && myState == 1) {
             rb2d.AddForce((bottleToRun.transform.position - transform.position).normalized);
@@ -51,7 +54,6 @@ public class LizardCarrierController : MonoBehaviour {
         if (lizardCarrierHP <= 0) {
             if (bottleToRun != null) {
                 bottleToRun.GetComponent<BloodBottleController>().SetBottleState("lay");
-
             }
             //спавнить несуна
             Destroy(gameObject);

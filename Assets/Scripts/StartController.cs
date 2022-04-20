@@ -32,7 +32,7 @@ public class StartController : MonoBehaviour {
         }
         //дать ресурсы
         gameController.GetComponent<GameController>().AddLizardBloodCount(5);
-        gameController.GetComponent<GameController>().AddMonkBloodCount(5);
+        gameController.GetComponent<GameController>().AddMonkBloodCount(1);
        
         //показать кнопки
         lizardButton.SetActive(true);

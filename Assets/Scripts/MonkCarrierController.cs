@@ -21,6 +21,9 @@ public class MonkCarrierController : MonoBehaviour {
     private void Update() {
         if (myState == 0) {
             rb2d.AddForce((monkHouse.transform.position - transform.position).normalized);
+            if (Vector2.Distance(monkHouse.position, transform.position) <= 0.2f) {
+                Destroy(gameObject);
+            }
         }
         if (bottleToRun != null && myState == 1) {
             rb2d.AddForce((bottleToRun.transform.position - transform.position).normalized);
