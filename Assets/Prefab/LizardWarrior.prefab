@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1585672389600090793}
   m_Layer: 0
   m_Name: LizardWarrior
-  m_TagString: Lizard
+  m_TagString: LizardWarrior
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

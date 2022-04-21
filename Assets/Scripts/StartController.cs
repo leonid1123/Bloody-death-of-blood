@@ -18,13 +18,17 @@ public class StartController : MonoBehaviour {
         monkButton.SetActive(false);
     }
     public void DeathOfAll() {
-        GameObject[] prey1 = GameObject.FindGameObjectsWithTag("Lizard");
+        GameObject[] prey1 = GameObject.FindGameObjectsWithTag("LizardWarrior");
+        GameObject[] prey11 = GameObject.FindGameObjectsWithTag("LizardCarrier");
         GameObject[] prey2 = GameObject.FindGameObjectsWithTag("Monk");
         GameObject[] wastedBlood = GameObject.FindGameObjectsWithTag("Blood");
         for (int i = 0; i < prey1.Length; i++) {
             Destroy(prey1[i]);
         }
         for (int i = 0; i < prey2.Length; i++) {
+            Destroy(prey2[i]);
+        }
+        for (int i = 0; i < prey11.Length; i++) {
             Destroy(prey2[i]);
         }
         for (int i = 0; i < wastedBlood.Length; i++) {

@@ -58,10 +58,16 @@ public class GameController : MonoBehaviour {
     [SerializeField]
     private Transform monkHouse;
     //место спавна монахов НУЖНО ИСПРАВЛЯТЬ
+
+    ////////////////////////////////////////////////////////////
+    private List<GameObject> allLizards;
+    ///////////////////////////////////////////////////////////
     void Start() {
         bloodLay = new List<GameObject>();
         bloodCarry = new List<GameObject>();
         bloodRun = new List<GameObject>();
+
+        allLizards = new List<GameObject>();
 
     }
 
@@ -80,8 +86,16 @@ public class GameController : MonoBehaviour {
         bloodCarry.Clear();
         bloodRun.Clear();
 
+        GameObject[] lizardWarriors = GameObject.FindGameObjectsWithTag("LizardWarrior");
+        GameObject[] lizardCarriers = GameObject.FindGameObjectsWithTag("LizardCarrier");
+        foreach(GameObject item in lizardWarriors) {
+            allLizards.Add(item);
+        }
+        foreach(GameObject item in lizardCarriers) {
+            allLizards.Add(item);
+        }
+
         monks = GameObject.FindGameObjectsWithTag("Monk");
-        lizards = GameObject.FindGameObjectsWithTag("Lizard");
         blood = GameObject.FindGameObjectsWithTag("Blood");
 
         foreach (GameObject bld in blood) {
@@ -95,7 +109,6 @@ public class GameController : MonoBehaviour {
             }
         }
         //найти несунов в статусе 0
-        GameObject[] stupidLizardCarriers = GameObject.Find("Carrier") 
 
         //спавнить несуна тут!!!
         foreach (GameObject bottle in bloodLay) {
@@ -131,8 +144,8 @@ public class GameController : MonoBehaviour {
     public GameObject[] GetMonks() {
         return monks;
     }
-    public GameObject[] GetLizards() {
-        return lizards;
+    public List<GameObject> GetLizards() {
+        return allLizards;
     }
     public void LizardSpawn() {
         if (lizardBloodCount > 0) {

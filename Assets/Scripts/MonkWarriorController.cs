@@ -5,7 +5,7 @@ using UnityEngine;
 public class MonkWarriorController : MonoBehaviour {
     [SerializeField]
     private Transform monkHouse;
-    private GameObject[] allEnemyes;
+    private List<GameObject> allEnemyes;
     [SerializeField]
     private GameObject monkBlood;
     [SerializeField]
@@ -16,7 +16,7 @@ public class MonkWarriorController : MonoBehaviour {
     public GameObject enemy1;
     void Update() {
         allEnemyes = GameObject.Find("GameController").GetComponent<GameController>().GetLizards();
-        if (allEnemyes != null && allEnemyes.Length > 0) {
+        if (allEnemyes != null && allEnemyes.Count > 0) {
             enemy1 = WhoToKill(allEnemyes);
             RunToEnemy(enemy1);
         }
@@ -33,7 +33,7 @@ public class MonkWarriorController : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0, 0, 0);
         }
     }
-    public GameObject WhoToKill(GameObject[] _allEnemyes) {//async
+    public GameObject WhoToKill(List<GameObject> _allEnemyes) {//async
         float dstMin = float.PositiveInfinity;
         GameObject KILL = _allEnemyes[0];
         foreach (GameObject i in _allEnemyes) {
